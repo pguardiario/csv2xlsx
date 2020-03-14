@@ -5,10 +5,14 @@ const filename = process.argv[2] || 'x.csv'
 const outputFile = process.argv[3] || filename.replace(/csv$/i, 'xlsx')
 
 var workbook = new Excel.Workbook();
-workbook.csv.readFile(filename)
+
+var options = {
+  map(value, index) {
+    return value
+  }
+}
+
+workbook.csv.readFile(filename, options)
   .then(ws => {
-    for(let i=0; i<ws.actualColumnCount; i++){
-      ws.getColumn(i + 1).numFmt = '@'
-    }
     workbook.xlsx.writeFile(outputFile)
   });
