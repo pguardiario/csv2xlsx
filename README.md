@@ -2,6 +2,7 @@
 convert csv file to xlsx
 
 npm install -g pguardiario/csv2xlsx
+
 Usage: csv2xlsx csvfile [xlsxfile]
 
 Convert all csv's:
